@@ -1,0 +1,25 @@
+.head {
+  height: 36px;
+  padding: 24px 250px 24px 176px;
+  gap: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0px;
+  background: var(--Surface-body-Background, #fafafa);
+  width: 78%;
+  margin: auto;
+}
+.search{
+  width: 400px;
+}
+.navbar {
+  text-decoration: none;
+  color: #000;
+}
+.DNav {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  padding: 2px;
+}
