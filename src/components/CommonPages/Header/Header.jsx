@@ -8,7 +8,14 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button, Container, Grid, Select, Stack } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  Select,
+  Stack,
+  useMediaQuery,
+} from "@mui/material";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -129,12 +136,26 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const isSmallScreen = useMediaQuery("(max-width: 800px)");
   return (
     <div className="top">
-      <Box className="head">
+      <Box
+        className="head"
+        style={{
+          ...(isSmallScreen
+            ? { padding: "24px 80px 24px 70px" }
+            : { padding: "24px 250px 24px 176px" }),
+        }}
+      >
         <>
           <div className="">
-            <img src={logo} alt="" />
+            <img
+              src={logo}
+              alt=""
+              style={{
+                ...(isSmallScreen ? { marginLeft: "-40px" } : { padding: "0px" }),
+              }}
+            />
           </div>
           <div className="search">
             <Container sx={{ display: "flex" }}>

@@ -19,7 +19,7 @@ const ProductCard = () => {
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
 
   return (
-    <div>
+    <div style={{ marginTop: '100px' }}>
       <Stack direction="row" spacing={2}>
         <Grid container alignItems="center" justifyContent="center">
           <Grid item lg={2} md={3} sm={6} sx={12}>
