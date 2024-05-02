@@ -22,10 +22,11 @@ const Slider = () => {
         marginTop: "40px",
         marginLeft: "10px",
         marginRight: "10px",
-        overflow: 'hidden'
+        overflow: 'hidden',
+        border: 'none'
       }}
     >
-      <Container>
+      <Container sx={{ border: 'none' }}>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

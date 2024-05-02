@@ -28,6 +28,10 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import logo from "../../../assets/Images/logo.png";
 import logo1 from "../../../assets/Images/ico.png";
+import cartImage from "../../../assets/Images/thumbnail.png";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ClearIcon from "@mui/icons-material/Clear";
 
 import { Paper } from "@mui/material";
 
@@ -147,11 +151,34 @@ const Header = () => {
     setOpenDrawer(newOpen);
   };
 
+  //cart
+  const [count, setCount] = React.useState(0);
+
+  const increment = (e) => {
+    e.preventDefault();
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const decrement = (e) => {
+    e.preventDefault();
+    if (count > 0) {
+      setCount((prevCount) => prevCount - 1);
+    }
+  };
+
+  //dismiss cart content...................!
+  const [visible, setVisible] = React.useState(true);
+  const clearItem = () => {
+    setVisible(false);
+  };
+
   const DrawerList = (
     <Box
       sx={{ width: 250, padding: "20px" }}
       role="presentation"
-      onClick={toggleDrawer(false)}
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
     >
       <Typography
         variant="h5"
@@ -161,11 +188,77 @@ const Header = () => {
         <span style={{ marginRight: "10px" }}>0</span>items in your cart
       </Typography>
       <Divider width="365px" />
-      <div className="" style={{ position: 'absolute', bottom: '16px' }}>
+
+     { visible ?  <div
+        className=""
+        style={{
+          padding: "20px",
+          paddingLeft: "0px",
+          display: "flex",
+          gap: "20px",
+          alignItems: "center",
+        }}
+      >
+        <img style={{ height: "80px", width: "80px" }} src={cartImage} alt="" />
+        <Stack>
+          <p>10$</p>
+          <div className="" style={{ display: "flex" }}>
+            <AddIcon
+              onClick={increment}
+              sx={{
+                border: "1px solid gray",
+                cursor: "pointer",
+                fontSize: "20px",
+                padding: "3px",
+                background: "#DCFCE7",
+                color: "#40c65e",
+              }}
+            />
+            <Typography
+              variant="body1"
+              gutterBottom
+              sx={{ marginLeft: "15px", marginRight: "15px" }}
+            >
+              {count}
+            </Typography>
+            <RemoveIcon
+              onClick={decrement}
+              sx={{
+                border: "1px solid gray",
+                cursor: "pointer",
+                fontSize: "20px",
+                padding: "3px",
+                background: "#FEE2E2",
+                color: "#EF4444",
+              }}
+            />
+          </div>
+          <p>IQD 120</p>
+        </Stack>
+        <ClearIcon
+          onClick={clearItem}
+          sx={{
+            position: "absolute",
+            right: 14,
+            cursor: "pointer",
+            fontSize: "17px",
+            border: "1px solid #40c65e",
+            padding: "5px",
+            borderRadius: "20px",
+          }}
+        />
+      </div> : null }
+
+      <div className="" style={{ position: "absolute", bottom: "16px" }}>
         <Button
           variant="contained"
           gutterBottom
-          sx={{ width: "365px", textTransform: "none", backgroundColor: '#25B0EB', boxShadow: 'none' }}
+          sx={{
+            width: "365px",
+            textTransform: "none",
+            backgroundColor: "#25B0EB",
+            boxShadow: "none",
+          }}
           size="large"
         >
           Check Out
@@ -173,7 +266,13 @@ const Header = () => {
         <Button
           variant="outlined"
           gutterBottom
-          sx={{ width: "365px", marginTop: "10px", textTransform: "none", boxShadow: 'none', border: "1px solid var(--Border-Regular, #e5e5e5)" }}
+          sx={{
+            width: "365px",
+            marginTop: "10px",
+            textTransform: "none",
+            boxShadow: "none",
+            border: "1px solid var(--Border-Regular, #e5e5e5)",
+          }}
           size="large"
         >
           Open Cart

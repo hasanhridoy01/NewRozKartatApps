@@ -46,7 +46,12 @@ const GiftCard = () => {
         </div>
         <Grid spacing={1} container alignItems="center" justifyContent="center">
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
+            <Card
+              sx={{
+                padding: 1,
+                border: "1px solid var(--Border-Regular, #e5e5e5)",
+              }}
+            >
               <CardMedia
                 sx={{ height: 200 }}
                 image={img1}
@@ -77,42 +82,55 @@ const GiftCard = () => {
                 </Stack>
               </CardContent>
               <CardActions>
-                <Stack direction="row" spacing={2} sx={{ padding: "0px" }}>
+                <Stack direction="row" spacing={3} sx={{ padding: "0px" }}>
                   <div
                     className=""
                     style={{ paddingLeft: "0px", marginLeft: "0px" }}
                   >
-                    <Typography gutterBottom sx={{ fontSize: '11px' }}>
+                    <Typography gutterBottom sx={{ fontSize: "11px" }}>
                       IQD 2405678.21
                     </Typography>
-                    <Typography gutterBottom sx={{ fontSize: '13px', color: '#EC5928' }}>
+                    <Typography
+                      gutterBottom
+                      sx={{ fontSize: "13px", color: "#EC5928" }}
+                    >
                       IQA 22622177.35
                     </Typography>
                   </div>
-                  <div className="" style={{ marginRight: "auto" }}>
-                    <Button
-                      startIcon={
-                        <ShoppingCartOutlinedIcon
-                          sx={{
-                            fontSize: "30px",
-                            color: "#000",
-                            backgroundColor: "#fff",
-                            padding: "6px",
-                            width: "100%",
-                            marginRight: "10px",
-                          }}
-                          size="small"
-                        />
-                      }
-                    ></Button>
-                    <Button variant="outlined" size="small">Buy Now</Button>
+                  <div
+                    className=""
+                    style={{
+                      marginRight: "auto",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <ShoppingCartOutlinedIcon
+                      sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        backgroundColor: "#fff",
+                        padding: "6px",
+                        marginRight: "10px",
+                        cursor: "pointer",
+                      }}
+                      size="small"
+                    />
+                    <Button variant="outlined" size="small">
+                      Buy Now
+                    </Button>
                   </div>
                 </Stack>
               </CardActions>
             </Card>
           </Grid>
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
+            <Card
+              sx={{
+                padding: 1,
+                border: "1px solid var(--Border-Regular, #e5e5e5)",
+              }}
+            >
               <CardMedia
                 sx={{ height: 200 }}
                 image={img2}
@@ -143,42 +161,55 @@ const GiftCard = () => {
                 </Stack>
               </CardContent>
               <CardActions>
-                <Stack direction="row" spacing={2} sx={{ padding: "0px" }}>
+                <Stack direction="row" spacing={3} sx={{ padding: "0px" }}>
                   <div
                     className=""
                     style={{ paddingLeft: "0px", marginLeft: "0px" }}
                   >
-                    <Typography gutterBottom sx={{ fontSize: '11px' }}>
+                    <Typography gutterBottom sx={{ fontSize: "11px" }}>
                       IQD 2405678.21
                     </Typography>
-                    <Typography gutterBottom sx={{ fontSize: '13px', color: '#EC5928' }}>
+                    <Typography
+                      gutterBottom
+                      sx={{ fontSize: "13px", color: "#EC5928" }}
+                    >
                       IQA 22622177.35
                     </Typography>
                   </div>
-                  <div className="" style={{ marginRight: "auto" }}>
-                    <Button
-                      startIcon={
-                        <ShoppingCartOutlinedIcon
-                          sx={{
-                            fontSize: "30px",
-                            color: "#000",
-                            backgroundColor: "#fff",
-                            padding: "6px",
-                            width: "100%",
-                            marginRight: "10px",
-                          }}
-                          size="small"
-                        />
-                      }
-                    ></Button>
-                    <Button variant="outlined" size="small">Buy Now</Button>
+                  <div
+                    className=""
+                    style={{
+                      marginRight: "auto",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <ShoppingCartOutlinedIcon
+                      sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        backgroundColor: "#fff",
+                        padding: "6px",
+                        marginRight: "10px",
+                        cursor: "pointer",
+                      }}
+                      size="small"
+                    />
+                    <Button variant="outlined" size="small">
+                      Buy Now
+                    </Button>
                   </div>
                 </Stack>
               </CardActions>
             </Card>
           </Grid>
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
+            <Card
+              sx={{
+                padding: 1,
+                border: "1px solid var(--Border-Regular, #e5e5e5)",
+              }}
+            >
               <CardMedia
                 sx={{ height: 200 }}
                 image={img3}
@@ -209,42 +240,48 @@ const GiftCard = () => {
                 </Stack>
               </CardContent>
               <CardActions>
-                <Stack direction="row" spacing={2} sx={{ padding: "0px" }}>
+                <Stack direction="row" spacing={3} sx={{ padding: "0px" }}>
                   <div
                     className=""
                     style={{ paddingLeft: "0px", marginLeft: "0px" }}
                   >
-                    <Typography gutterBottom sx={{ fontSize: '11px' }}>
+                    <Typography gutterBottom sx={{ fontSize: "11px" }}>
                       IQD 2405678.21
                     </Typography>
-                    <Typography gutterBottom sx={{ fontSize: '13px', color: '#EC5928' }}>
+                    <Typography
+                      gutterBottom
+                      sx={{ fontSize: "13px", color: "#EC5928" }}
+                    >
                       IQA 22622177.35
                     </Typography>
                   </div>
-                  <div className="" style={{ marginRight: "auto" }}>
-                    <Button
-                      startIcon={
-                        <ShoppingCartOutlinedIcon
-                          sx={{
-                            fontSize: "30px",
-                            color: "#000",
-                            backgroundColor: "#fff",
-                            padding: "6px",
-                            width: "100%",
-                            marginRight: "10px",
-                          }}
-                          size="small"
-                        />
-                      }
-                    ></Button>
-                    <Button variant="outlined" size="small">Buy Now</Button>
+                  <div className="" style={{ marginRight: "auto", display: 'flex', alignItems: 'center' }}>
+                    <ShoppingCartOutlinedIcon
+                      sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        backgroundColor: "#fff",
+                        padding: "6px",
+                        marginRight: "10px",
+                        cursor: 'pointer'
+                      }}
+                      size="small"
+                    />
+                    <Button variant="outlined" size="small">
+                      Buy Now
+                    </Button>
                   </div>
                 </Stack>
               </CardActions>
             </Card>
           </Grid>
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
+            <Card
+              sx={{
+                padding: 1,
+                border: "1px solid var(--Border-Regular, #e5e5e5)",
+              }}
+            >
               <CardMedia
                 sx={{ height: 200 }}
                 image={img4}
@@ -275,35 +312,36 @@ const GiftCard = () => {
                 </Stack>
               </CardContent>
               <CardActions>
-                <Stack direction="row" spacing={2} sx={{ padding: "0px" }}>
+                <Stack direction="row" spacing={3} sx={{ padding: "0px" }}>
                   <div
                     className=""
                     style={{ paddingLeft: "0px", marginLeft: "0px" }}
                   >
-                    <Typography gutterBottom sx={{ fontSize: '11px' }}>
+                    <Typography gutterBottom sx={{ fontSize: "11px" }}>
                       IQD 2405678.21
                     </Typography>
-                    <Typography gutterBottom sx={{ fontSize: '13px', color: '#EC5928' }}>
+                    <Typography
+                      gutterBottom
+                      sx={{ fontSize: "13px", color: "#EC5928" }}
+                    >
                       IQA 22622177.35
                     </Typography>
                   </div>
-                  <div className="" style={{ marginRight: "auto" }}>
-                    <Button
-                      startIcon={
-                        <ShoppingCartOutlinedIcon
-                          sx={{
-                            fontSize: "30px",
-                            color: "#000",
-                            backgroundColor: "#fff",
-                            padding: "6px",
-                            width: "100%",
-                            marginRight: "10px",
-                          }}
-                          size="small"
-                        />
-                      }
-                    ></Button>
-                    <Button variant="outlined" size="small">Buy Now</Button>
+                  <div className="" style={{ marginRight: "auto", display: 'flex', alignItems: 'center' }}>
+                    <ShoppingCartOutlinedIcon
+                      sx={{
+                        fontSize: "20px",
+                        color: "#000",
+                        backgroundColor: "#fff",
+                        padding: "6px",
+                        marginRight: "10px",
+                        cursor: 'pointer'
+                      }}
+                      size="small"
+                    />
+                    <Button variant="outlined" size="small">
+                      Buy Now
+                    </Button>
                   </div>
                 </Stack>
               </CardActions>
