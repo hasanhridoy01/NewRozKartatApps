@@ -46,7 +46,7 @@ const GiftCard = () => {
         </div>
         <Grid spacing={1} container alignItems="center" justifyContent="center">
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1 }}>
+            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
               <CardMedia
                 sx={{ height: 200 }}
                 image={img1}
@@ -112,7 +112,7 @@ const GiftCard = () => {
             </Card>
           </Grid>
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1 }}>
+            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
               <CardMedia
                 sx={{ height: 200 }}
                 image={img2}
@@ -178,7 +178,7 @@ const GiftCard = () => {
             </Card>
           </Grid>
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1 }}>
+            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
               <CardMedia
                 sx={{ height: 200 }}
                 image={img3}
@@ -244,7 +244,7 @@ const GiftCard = () => {
             </Card>
           </Grid>
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card sx={{ padding: 1 }}>
+            <Card sx={{ padding: 1, border: "1px solid var(--Border-Regular, #e5e5e5)" }}>
               <CardMedia
                 sx={{ height: 200 }}
                 image={img4}

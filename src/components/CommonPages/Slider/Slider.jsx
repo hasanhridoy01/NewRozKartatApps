@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import slider1 from "../../../assets/Images/Slider/01.jpg";
-import slider2 from "../../../assets/Images/Slider/02.jpg";
-import slider3 from "../../../assets/Images/Slider/03.png";
+import slider1 from "../../../assets/Images/Slider/1.webp";
+import slider2 from "../../../assets/Images/Slider/2.webp";
+import slider3 from "../../../assets/Images/Slider/3.webp";
 import { useMediaQuery } from '@mui/material';
 
 import "./Slider.css";

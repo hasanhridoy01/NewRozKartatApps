@@ -11,6 +11,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import {
   Button,
   Container,
+  Divider,
+  Drawer,
   Grid,
   Select,
   Stack,
@@ -136,7 +138,50 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const isSmallScreen = useMediaQuery("(max-width: 800px)");
+
+  const [openDrawer, setOpenDrawer] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpenDrawer(newOpen);
+  };
+
+  const DrawerList = (
+    <Box
+      sx={{ width: 250, padding: "20px" }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+    >
+      <Typography
+        variant="h5"
+        gutterBottom
+        sx={{ marginTop: "26px", color: "gray" }}
+      >
+        <span style={{ marginRight: "10px" }}>0</span>items in your cart
+      </Typography>
+      <Divider width="365px" />
+      <div className="" style={{ position: 'absolute', bottom: '16px' }}>
+        <Button
+          variant="contained"
+          gutterBottom
+          sx={{ width: "365px", textTransform: "none", backgroundColor: '#25B0EB', boxShadow: 'none' }}
+          size="large"
+        >
+          Check Out
+        </Button>
+        <Button
+          variant="outlined"
+          gutterBottom
+          sx={{ width: "365px", marginTop: "10px", textTransform: "none", boxShadow: 'none', border: "1px solid var(--Border-Regular, #e5e5e5)" }}
+          size="large"
+        >
+          Open Cart
+        </Button>
+      </div>
+    </Box>
+  );
+
   return (
     <div className="top">
       <Box
@@ -153,7 +198,9 @@ const Header = () => {
               src={logo}
               alt=""
               style={{
-                ...(isSmallScreen ? { marginLeft: "-40px" } : { padding: "0px" }),
+                ...(isSmallScreen
+                  ? { marginLeft: "-40px" }
+                  : { padding: "0px" }),
               }}
             />
           </div>
@@ -187,6 +234,7 @@ const Header = () => {
           style={{ display: "flex", height: "32px", float: "right" }}
         >
           <Button
+            onClick={toggleDrawer(true)}
             startIcon={
               <ShoppingCartOutlinedIcon
                 sx={{
@@ -218,6 +266,26 @@ const Header = () => {
             }
           ></Button>
         </div>
+
+        <Drawer
+          anchor="right"
+          open={openDrawer}
+          onClose={toggleDrawer(false)}
+          sx={{
+            width: 260, // Customize the width of the drawer
+            background: "none", // Change the background color
+            marginBottom: "30px",
+            "& .MuiDrawer-paper": {
+              // Target the paper element inside the Drawer for more specific styling
+              width: 400,
+              background: "#fff",
+              overflow: "hidden",
+              // Add more styles as needed
+            },
+          }}
+        >
+          {DrawerList}
+        </Drawer>
       </Box>
       <Box
         sx={{
