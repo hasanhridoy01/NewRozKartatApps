@@ -16,8 +16,33 @@ import img3 from "../../../assets/Images/GiftCard/card2.png";
 import img4 from "../../../assets/Images/GiftCard/card3.png";
 import PublicIcon from "@mui/icons-material/Public";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Form } from "react-router-dom";
+import { useState } from "react";
 
 const GiftCard = () => {
+  const [cart, setCart] = useState([]);
+
+  //handleFromSubmit......................!
+  const handleFromSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
+  //handleCart..................!
+  const handleCart = (newItem) => {
+    if (!newItem) {
+      console.log("Invalid item.");
+      return;
+    }
+
+    const isItemInCart = cart.some((item) => item === newItem);
+
+    if (!isItemInCart) {
+      setCart((prevCart) => [...prevCart, newItem]);
+    } else {
+      console.log("Item already exists in the cart.");
+    }
+  };
   return (
     <div style={{ marginTop: "100px" }}>
       <Stack>
@@ -46,83 +71,90 @@ const GiftCard = () => {
         </div>
         <Grid spacing={1} container alignItems="center" justifyContent="center">
           <Grid item lg={3} md={6} sm={12} xs={12}>
-            <Card
-              sx={{
-                padding: 1,
-                border: "1px solid var(--Border-Regular, #e5e5e5)",
-              }}
-            >
-              <CardMedia
-                sx={{ height: 200 }}
-                image={img1}
-                title="green iguana"
-              />
-              <CardContent sx={{ paddingLeft: "1px" }}>
-                <Stack spacing={2}>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    sx={{ textAlign: "left" }}
-                  >
-                    Play station Network Card Global
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    style={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    <Icon
-                      component={PublicIcon}
-                      fontSize="small"
-                      sx={{ verticalAlign: "middle", marginRight: "8px" }}
-                    />{" "}
-                    Global - Xbox
-                  </Typography>
-                  <Divider sx={{ margin: "auto" }} />
-                </Stack>
-              </CardContent>
-              <CardActions>
-                <Stack direction="row" spacing={3} sx={{ padding: "0px" }}>
-                  <div
-                    className=""
-                    style={{ paddingLeft: "0px", marginLeft: "0px" }}
-                  >
-                    <Typography gutterBottom sx={{ fontSize: "11px" }}>
-                      IQD 2405678.21
-                    </Typography>
+            <Form onSubmit={handleFromSubmit}>
+              <Card
+                sx={{
+                  padding: 1,
+                  border: "1px solid var(--Border-Regular, #e5e5e5)",
+                }}
+              >
+                <CardMedia
+                  sx={{ height: 200 }}
+                  image={img1}
+                  name="images"
+                  title="green iguana"
+                />
+                <CardContent sx={{ paddingLeft: "1px" }}>
+                  <Stack spacing={2}>
                     <Typography
                       gutterBottom
-                      sx={{ fontSize: "13px", color: "#EC5928" }}
+                      variant="h6"
+                      name="productName"
+                      sx={{ textAlign: "left" }}
                     >
-                      IQA 22622177.35
+                      Play station Network Card Global
                     </Typography>
-                  </div>
-                  <div
-                    className=""
-                    style={{
-                      marginRight: "auto",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <ShoppingCartOutlinedIcon
-                      sx={{
-                        fontSize: "20px",
-                        color: "#000",
-                        backgroundColor: "#fff",
-                        padding: "6px",
-                        marginRight: "10px",
-                        cursor: "pointer",
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      name="brand"
+                      style={{ display: "inline-flex", alignItems: "center" }}
+                    >
+                      <Icon
+                        component={PublicIcon}
+                        fontSize="small"
+                        sx={{ verticalAlign: "middle", marginRight: "8px" }}
+                      />{" "}
+                      Global - Xbox
+                    </Typography>
+                    <Divider sx={{ margin: "auto" }} />
+                  </Stack>
+                </CardContent>
+                <CardActions>
+                  <Stack direction="row" spacing={3} sx={{ padding: "0px" }}>
+                    <div
+                      className=""
+                      style={{ paddingLeft: "0px", marginLeft: "0px" }}
+                    >
+                      <Typography gutterBottom sx={{ fontSize: "11px" }}>
+                        IQD 2405678.21
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        sx={{ fontSize: "13px", color: "#EC5928" }}
+                      >
+                        IQA 22622177.35
+                      </Typography>
+                    </div>
+                    <div
+                      className=""
+                      style={{
+                        marginRight: "auto",
+                        display: "flex",
+                        alignItems: "center",
                       }}
-                      size="small"
-                    />
-                    <Button variant="outlined" size="small">
-                      Buy Now
-                    </Button>
-                  </div>
-                </Stack>
-              </CardActions>
-            </Card>
+                    >
+                      <ShoppingCartOutlinedIcon
+                        sx={{
+                          fontSize: "20px",
+                          color: "#000",
+                          backgroundColor: "#fff",
+                          padding: "6px",
+                          marginRight: "10px",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => handleCart("IQA 22622177.35")}
+                        size="small"
+                        type="button"
+                      />
+                      <Button variant="outlined" size="small" type="submit">
+                        Buy Now
+                      </Button>
+                    </div>
+                  </Stack>
+                </CardActions>
+              </Card>
+            </Form>
           </Grid>
           <Grid item lg={3} md={6} sm={12} xs={12}>
             <Card
@@ -173,7 +205,7 @@ const GiftCard = () => {
                       gutterBottom
                       sx={{ fontSize: "13px", color: "#EC5928" }}
                     >
-                      IQA 22622177.35
+                      IQA 22622177.36
                     </Typography>
                   </div>
                   <div
@@ -193,6 +225,7 @@ const GiftCard = () => {
                         marginRight: "10px",
                         cursor: "pointer",
                       }}
+                      onClick={() => handleCart("IQA 22622177.36")}
                       size="small"
                     />
                     <Button variant="outlined" size="small">
@@ -252,10 +285,17 @@ const GiftCard = () => {
                       gutterBottom
                       sx={{ fontSize: "13px", color: "#EC5928" }}
                     >
-                      IQA 22622177.35
+                      IQA 22622177.37
                     </Typography>
                   </div>
-                  <div className="" style={{ marginRight: "auto", display: 'flex', alignItems: 'center' }}>
+                  <div
+                    className=""
+                    style={{
+                      marginRight: "auto",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     <ShoppingCartOutlinedIcon
                       sx={{
                         fontSize: "20px",
@@ -263,9 +303,10 @@ const GiftCard = () => {
                         backgroundColor: "#fff",
                         padding: "6px",
                         marginRight: "10px",
-                        cursor: 'pointer'
+                        cursor: "pointer",
                       }}
                       size="small"
+                      onClick={() => handleCart("IQA 22622177.37")}
                     />
                     <Button variant="outlined" size="small">
                       Buy Now
@@ -324,10 +365,17 @@ const GiftCard = () => {
                       gutterBottom
                       sx={{ fontSize: "13px", color: "#EC5928" }}
                     >
-                      IQA 22622177.35
+                      IQA 22622177.38
                     </Typography>
                   </div>
-                  <div className="" style={{ marginRight: "auto", display: 'flex', alignItems: 'center' }}>
+                  <div
+                    className=""
+                    style={{
+                      marginRight: "auto",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     <ShoppingCartOutlinedIcon
                       sx={{
                         fontSize: "20px",
@@ -335,9 +383,10 @@ const GiftCard = () => {
                         backgroundColor: "#fff",
                         padding: "6px",
                         marginRight: "10px",
-                        cursor: 'pointer'
+                        cursor: "pointer",
                       }}
                       size="small"
+                      onClick={() => handleCart("IQA 22622177.38")}
                     />
                     <Button variant="outlined" size="small">
                       Buy Now
