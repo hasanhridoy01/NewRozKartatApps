@@ -7,6 +7,7 @@ import GameCard from "../GameCard/GameCard";
 import BigIamages from "../BigIamages/BigIamages";
 import GameCD from "../GameCD/GameCD";
 import Arrivals from "../Arrivals/Arrivals";
+import Recommended from "../Recommended/Recommended";
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
                 <BigIamages />
                 <GameCD />
                 <Arrivals />
+                <Recommended />
             </Container>
         </div>
     );

@@ -8,6 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Header from "../../components/CommonPages/Header/Header";
 import Slider from "../../components/CommonPages/Slider/Slider";
+import Footer from "../../components/CommonPages/Footer/Footer";
 
 const Main = () => {
     return (
@@ -15,6 +16,7 @@ const Main = () => {
           <Header />
           <Slider />
           <Outlet />  
+          <Footer />
         </div>
     );
 };
