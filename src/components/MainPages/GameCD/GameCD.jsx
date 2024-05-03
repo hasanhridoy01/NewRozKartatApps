@@ -10,16 +10,16 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import img1 from "../../../assets/Images/contentGaming/Frame 1000003047.png";
-import img2 from "../../../assets/Images/contentGaming/Frame 1000003048.png";
-import img3 from "../../../assets/Images/contentGaming/Frame 1000003048-1.png";
-import img4 from "../../../assets/Images/contentGaming/Frame 1000002467.png";
+import img3 from "../../../assets/Images/GameCD/Frame 1000003048.png";
+import img4 from "../../../assets/Images/GameCD/Frame 1000003048 1.png";
+import img1 from "../../../assets/Images/GameCD/Frame 1000002467.png";
+import img2 from "../../../assets/Images/GameCD/Frame 1000002467 1.png";
 import PublicIcon from "@mui/icons-material/Public";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Form } from "react-router-dom";
 import { useState } from "react";
 
-const GameCard = () => {
+const GameCD = () => {
   const [cart, setCart] = useState([]);
 
   //handleFromSubmit......................!
@@ -55,7 +55,7 @@ const GameCard = () => {
             variant="h6"
             gutterBottom
           >
-            In-Game Currency <span style={{ fontWeight: 400 }}>(1500)</span>
+            Gaming CD Key <span style={{ fontWeight: 400 }}>(15)</span>
           </Typography>
           <Button
             sx={{
@@ -76,7 +76,7 @@ const GameCard = () => {
                 sx={{
                   padding: 1,
                   border: "1px solid var(--Border-Regular, #e5e5e5)",
-                  height: '380px'
+                  height: "380px",
                 }}
               >
                 <CardMedia
@@ -91,10 +91,9 @@ const GameCard = () => {
                       gutterBottom
                       variant="body2"
                       name="productName"
-                      sx={{ textAlign: "left", fontSize: '14px' }}
+                      sx={{ textAlign: "left", fontSize: "14px" }}
                     >
-                      Call of Duty MW 2.0/ CW/ Vanguard/ Warzone 2.0 PC – Credit
-                      Point (CP)
+                      CONQUER ONLINE (GLOBAL) FC 24 - FIFA Points
                     </Typography>
                     <Typography
                       variant="body2"
@@ -163,7 +162,7 @@ const GameCard = () => {
               sx={{
                 padding: 1,
                 border: "1px solid var(--Border-Regular, #e5e5e5)",
-                height: '380px'
+                height: "380px",
               }}
             >
               <CardMedia
@@ -175,9 +174,10 @@ const GameCard = () => {
                 <Stack spacing={2}>
                   <Typography
                     gutterBottom
-                    sx={{ textAlign: "left", fontSize: '14px' }}
+                    sx={{ textAlign: "left", fontSize: "14px" }}
                   >
-                    PUBG Mobile – UC Redeem Code (Midasbuy)
+                    S.T.A.L.K.E.R. 2: Heart of Chornobyl (PC) - Steam Key -
+                    GLOBAL
                   </Typography>
                   <Typography
                     variant="body2"
@@ -243,7 +243,7 @@ const GameCard = () => {
               sx={{
                 padding: 1,
                 border: "1px solid var(--Border-Regular, #e5e5e5)",
-                height: '380px'
+                height: "380px",
               }}
             >
               <CardMedia
@@ -255,7 +255,7 @@ const GameCard = () => {
                 <Stack spacing={2}>
                   <Typography
                     gutterBottom
-                    sx={{ textAlign: "left", fontSize: '14px' }}
+                    sx={{ textAlign: "left", fontSize: "14px" }}
                   >
                     FC 24 - FIFA Points UC Redeem Code (Midasbuy)
                   </Typography>
@@ -323,7 +323,7 @@ const GameCard = () => {
               sx={{
                 padding: 1,
                 border: "1px solid var(--Border-Regular, #e5e5e5)",
-                height: '380px'
+                height: "380px",
               }}
             >
               <CardMedia
@@ -336,7 +336,7 @@ const GameCard = () => {
                   <Typography
                     gutterBottom
                     variant="body2"
-                    sx={{ textAlign: "left", fontSize: '14px' }}
+                    sx={{ textAlign: "left", fontSize: "14px" }}
                   >
                     Genshin Impact – Genesis Crystal (GC) TopUp
                   </Typography>
@@ -405,4 +405,4 @@ const GameCard = () => {
   );
 };
 
-export default GameCard;
+export default GameCD;

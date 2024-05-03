@@ -11,7 +11,7 @@ import Slider from "../../components/CommonPages/Slider/Slider";
 
 const Main = () => {
     return (
-        <div style={{ width: '100%', overflow: 'hidden',}}>
+        <div style={{ width: '100%', overflow: 'hidden', }}>
           <Header />
           <Slider />
           <Outlet />  

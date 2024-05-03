@@ -23,7 +23,7 @@ const Slider = () => {
         marginLeft: "10px",
         marginRight: "10px",
         overflow: 'hidden',
-        border: 'none'
+        border: 'none',
       }}
     >
       <Container sx={{ border: 'none' }}>
