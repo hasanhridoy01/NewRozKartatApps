@@ -143,7 +143,9 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  const isSmallScreen = useMediaQuery("(max-width: 800px)");
+  const isSmallScreen = useMediaQuery("(max-width: 1200px)");
+  const isSmallScreenTwo = useMediaQuery("(max-width: 840px)");
+  const isSmallScreenThree = useMediaQuery("(max-width: 640px)");
 
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
@@ -172,6 +174,43 @@ const Header = () => {
     setVisible(false);
   };
 
+  //handleMenuDrawer............................!
+  const [drawer, setDrawer] = React.useState(false);
+
+  const handleMenuDrawer = () => {
+    setDrawer(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setDrawer(false);
+  };
+
+  const DrawerListTwo = (
+    <Box
+      sx={{ width: 250, padding: "40px" }}
+      role="presentation"
+      onClick={handleMenuDrawer}
+    >
+      <div className="" style={{ marginLeft: '50px', marginBottom: '20px' }}>
+        <img
+          src={logo}
+          alt=""
+        />
+      </div>
+      <Divider />
+      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Home</Typography>
+      <Divider />
+      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Game Top-Up</Typography>
+      <Divider />
+      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Vouchers</Typography>
+      <Divider />
+      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Bill Pay</Typography>
+      <Divider />
+      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Mobile Recharge</Typography>
+      <Divider />
+    </Box>
+  );
+
   const DrawerList = (
     <Box
       sx={{ width: 250, padding: "20px" }}
@@ -189,65 +228,71 @@ const Header = () => {
       </Typography>
       <Divider width="365px" />
 
-     { visible ?  <div
-        className=""
-        style={{
-          padding: "20px",
-          paddingLeft: "0px",
-          display: "flex",
-          gap: "20px",
-          alignItems: "center",
-        }}
-      >
-        <img style={{ height: "80px", width: "80px" }} src={cartImage} alt="" />
-        <Stack>
-          <p>10$</p>
-          <div className="" style={{ display: "flex" }}>
-            <AddIcon
-              onClick={increment}
-              sx={{
-                border: "1px solid gray",
-                cursor: "pointer",
-                fontSize: "20px",
-                padding: "3px",
-                background: "#DCFCE7",
-                color: "#40c65e",
-              }}
-            />
-            <Typography
-              variant="body1"
-              gutterBottom
-              sx={{ marginLeft: "15px", marginRight: "15px" }}
-            >
-              {count}
-            </Typography>
-            <RemoveIcon
-              onClick={decrement}
-              sx={{
-                border: "1px solid gray",
-                cursor: "pointer",
-                fontSize: "20px",
-                padding: "3px",
-                background: "#FEE2E2",
-                color: "#EF4444",
-              }}
-            />
-          </div>
-          <p>IQD 120</p>
-        </Stack>
-        <ClearIcon
-          onClick={clearItem}
-          sx={{
-            position: "absolute",
-            right: 14,
-            cursor: "pointer",
-            fontSize: "17px",
-            border: "1px solid #40c65e",
-            padding: "5px",
-            borderRadius: "20px",
+      {visible ? (
+        <div
+          className=""
+          style={{
+            padding: "20px",
+            paddingLeft: "0px",
+            display: "flex",
+            gap: "20px",
+            alignItems: "center",
           }}
-        />
-      </div> : null }
+        >
+          <img
+            style={{ height: "80px", width: "80px" }}
+            src={cartImage}
+            alt=""
+          />
+          <Stack>
+            <p>10$</p>
+            <div className="" style={{ display: "flex" }}>
+              <AddIcon
+                onClick={increment}
+                sx={{
+                  border: "1px solid gray",
+                  cursor: "pointer",
+                  fontSize: "20px",
+                  padding: "3px",
+                  background: "#DCFCE7",
+                  color: "#40c65e",
+                }}
+              />
+              <Typography
+                variant="body1"
+                gutterBottom
+                sx={{ marginLeft: "15px", marginRight: "15px" }}
+              >
+                {count}
+              </Typography>
+              <RemoveIcon
+                onClick={decrement}
+                sx={{
+                  border: "1px solid gray",
+                  cursor: "pointer",
+                  fontSize: "20px",
+                  padding: "3px",
+                  background: "#FEE2E2",
+                  color: "#EF4444",
+                }}
+              />
+            </div>
+            <p>IQD 120</p>
+          </Stack>
+          <ClearIcon
+            onClick={clearItem}
+            sx={{
+              position: "absolute",
+              right: 14,
+              cursor: "pointer",
+              fontSize: "17px",
+              border: "1px solid #40c65e",
+              padding: "5px",
+              borderRadius: "20px",
+            }}
+          />
+        </div>
+      ) : null}
 
       <div className="" style={{ position: "absolute", bottom: "16px" }}>
         <Button
@@ -289,9 +334,15 @@ const Header = () => {
           ...(isSmallScreen
             ? { padding: "24px 80px 24px 70px" }
             : { padding: "24px 250px 24px 176px" }),
+          height: isSmallScreenThree ? "110px" : "",
         }}
       >
-        <>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isSmallScreenThree ? "column" : "row",
+          }}
+        >
           <div className="">
             <img
               src={logo}
@@ -303,7 +354,13 @@ const Header = () => {
               }}
             />
           </div>
-          <div className="search">
+          <div
+            className="search"
+            style={{
+              marginTop: isSmallScreenThree ? "27px" : "0px",
+              marginLeft: isSmallScreenThree ? "-56px" : "0px",
+            }}
+          >
             <Container sx={{ display: "flex" }}>
               {" "}
               {/* Adjust the maxWidth as needed */}
@@ -327,44 +384,49 @@ const Header = () => {
               </Paper>
             </Container>
           </div>
-        </>
-        <div
-          className=""
-          style={{ display: "flex", height: "32px", float: "right" }}
-        >
-          <Button
-            onClick={toggleDrawer(true)}
-            startIcon={
-              <ShoppingCartOutlinedIcon
-                sx={{
-                  fontSize: "30px",
-                  color: "#000",
-                  backgroundColor: "#fff",
-                  padding: "6px",
-                  width: "100%",
-                }}
-              />
-            }
-          ></Button>
-          <img
-            src={logo1}
-            alt=""
-            style={{ background: "none", width: "40px" }}
-          />
-          <Button
-            startIcon={
-              <Person2OutlinedIcon
-                sx={{
-                  fontSize: "30px",
-                  color: "#000",
-                  backgroundColor: "#fff",
-                  padding: "6px",
-                  width: "100%",
-                }}
-              />
-            }
-          ></Button>
         </div>
+
+        {isSmallScreenTwo ? (
+          ""
+        ) : (
+          <div
+            className=""
+            style={{ display: "flex", height: "32px", float: "right" }}
+          >
+            <Button
+              onClick={toggleDrawer(true)}
+              startIcon={
+                <ShoppingCartOutlinedIcon
+                  sx={{
+                    fontSize: "30px",
+                    color: "#000",
+                    backgroundColor: "#fff",
+                    padding: "6px",
+                    width: "100%",
+                  }}
+                />
+              }
+            ></Button>
+            <img
+              src={logo1}
+              alt=""
+              style={{ background: "none", width: "40px" }}
+            />
+            <Button
+              startIcon={
+                <Person2OutlinedIcon
+                  sx={{
+                    fontSize: "30px",
+                    color: "#000",
+                    backgroundColor: "#fff",
+                    padding: "6px",
+                    width: "100%",
+                  }}
+                />
+              }
+            ></Button>
+          </div>
+        )}
 
         <Drawer
           anchor="right"
@@ -384,6 +446,10 @@ const Header = () => {
           }}
         >
           {DrawerList}
+        </Drawer>
+
+        <Drawer open={drawer} onClose={handleCloseDrawer}>
+          {DrawerListTwo}
         </Drawer>
       </Box>
       <Box
@@ -405,19 +471,35 @@ const Header = () => {
             }}
           >
             <Toolbar>
-              <IconButton
-                size="large"
-                edge="start"
-                color="dark"
-                aria-label="open drawer"
-                sx={{ mr: 2 }}
-                aria-controls={open ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-              >
-                <FormatListBulletedIcon />
-              </IconButton>
+              {isSmallScreenThree ? (
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="dark"
+                  aria-label="open drawer"
+                  sx={{ mr: 2 }}
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleMenuDrawer}
+                >
+                  <FormatListBulletedIcon />
+                </IconButton>
+              ) : (
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="dark"
+                  aria-label="open drawer"
+                  sx={{ mr: 2 }}
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <FormatListBulletedIcon />
+                </IconButton>
+              )}
               <Typography
                 variant="body2"
                 noWrap
