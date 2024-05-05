@@ -96,7 +96,7 @@ const MobileRecharge = () => {
                 label="I agree the Terms and Conditions"
               />
             </div>
-            <Stack direction={"row"} spacing={2} sx={{ marginTop: '20px', width: '460px' }}>
+            <Stack direction={"row"} spacing={2} sx={{ marginTop: '20px', width: '458px' }}>
               <Button variant="outlined" color="info" fullWidth>Add to Cart</Button>
               <Button variant="contained" color="info" fullWidth>Add to Cart</Button>
             </Stack>

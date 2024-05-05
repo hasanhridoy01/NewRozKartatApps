@@ -16,11 +16,12 @@ import img3 from "../../../assets/Images/GiftCard/card2.png";
 import img4 from "../../../assets/Images/GiftCard/card3.png";
 import PublicIcon from "@mui/icons-material/Public";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { Form } from "react-router-dom";
-import { useState } from "react";
+import { Form, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 const GiftCard = () => {
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
   //handleFromSubmit......................!
   const handleFromSubmit = (e) => {
@@ -43,6 +44,15 @@ const GiftCard = () => {
       console.log("Item already exists in the cart.");
     }
   };
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  //handleAddCart.....................!
+  const handleAddCart = () => {
+    navigate('/addToCart')
+  }
   return (
     <div style={{ marginTop: "100px" }}>
       <Stack>
@@ -147,7 +157,7 @@ const GiftCard = () => {
                         size="small"
                         type="button"
                       />
-                      <Button variant="outlined" size="small" type="submit">
+                      <Button variant="outlined" size="small" type="submit" onClick={handleAddCart}>
                         Buy Now
                       </Button>
                     </div>
@@ -228,7 +238,7 @@ const GiftCard = () => {
                       onClick={() => handleCart("IQA 22622177.36")}
                       size="small"
                     />
-                    <Button variant="outlined" size="small">
+                    <Button variant="outlined" size="small" onClick={handleAddCart}>
                       Buy Now
                     </Button>
                   </div>
@@ -308,7 +318,7 @@ const GiftCard = () => {
                       size="small"
                       onClick={() => handleCart("IQA 22622177.37")}
                     />
-                    <Button variant="outlined" size="small">
+                    <Button variant="outlined" size="small" onClick={handleAddCart}>
                       Buy Now
                     </Button>
                   </div>
@@ -388,7 +398,7 @@ const GiftCard = () => {
                       size="small"
                       onClick={() => handleCart("IQA 22622177.38")}
                     />
-                    <Button variant="outlined" size="small">
+                    <Button variant="outlined" size="small" onClick={handleAddCart}>
                       Buy Now
                     </Button>
                   </div>

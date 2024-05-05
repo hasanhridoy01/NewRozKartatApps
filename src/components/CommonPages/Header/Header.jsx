@@ -191,6 +191,10 @@ const Header = () => {
     setDrawer(false);
   };
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const DrawerListTwo = (
     <Box
       sx={{ width: 250, padding: "40px" }}

@@ -7,6 +7,7 @@ import GameTopUp from './components/GameTopUp/GameTopUp.jsx';
 import Vouchers from './components/Vouchers/Vouchers.jsx';
 import BillPay from './components/BillPay/BillPay.jsx';
 import MobileRecharge from './components/MobileRecharge/MobileRecharge.jsx';
+import AddToCart from './components/AddToCart/AddToCart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/mobile',
         element: <MobileRecharge />
+      },
+      {
+        path: '/addToCart',
+        element: <AddToCart />
       }
     ]
   }
