@@ -18,7 +18,7 @@ import {
   Stack,
   useMediaQuery,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Header.css";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import Menu from "@mui/material/Menu";
@@ -92,9 +92,11 @@ const Header = () => {
   const [isActiveVouchers, setIsActiveVouchers] = React.useState(false);
   const [isActiveBill, setIsActiveBill] = React.useState(false);
   const [isActiveMobile, setIsActiveMobile] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleActiveEffectHome = (e) => {
     e.preventDefault();
+    navigate('/');
     setIsActiveHome(true);
     setIsActiveGame(false);
     setIsActiveVouchers(false);
@@ -103,6 +105,7 @@ const Header = () => {
   };
   const handleActiveEffectGame = (e) => {
     e.preventDefault();
+    navigate('/game');
     setIsActiveGame(true);
     setIsActiveHome(false);
     setIsActiveVouchers(false);
@@ -191,22 +194,49 @@ const Header = () => {
       role="presentation"
       onClick={handleMenuDrawer}
     >
-      <div className="" style={{ marginLeft: '50px', marginBottom: '20px' }}>
-        <img
-          src={logo}
-          alt=""
-        />
+      <div className="" style={{ marginLeft: "50px", marginBottom: "20px" }}>
+        <img src={logo} alt="" />
       </div>
       <Divider />
-      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Home</Typography>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ margin: "8px", marginLeft: "50px" }}
+      >
+        Home
+      </Typography>
       <Divider />
-      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Game Top-Up</Typography>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ margin: "8px", marginLeft: "50px" }}
+      >
+        Game Top-Up
+      </Typography>
       <Divider />
-      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Vouchers</Typography>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ margin: "8px", marginLeft: "50px" }}
+      >
+        Vouchers
+      </Typography>
       <Divider />
-      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Bill Pay</Typography>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ margin: "8px", marginLeft: "50px" }}
+      >
+        Bill Pay
+      </Typography>
       <Divider />
-      <Typography variant="h6" gutterBottom sx={{ margin: '8px', marginLeft: '50px', }}>Mobile Recharge</Typography>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ margin: "8px", marginLeft: "50px" }}
+      >
+        Mobile Recharge
+      </Typography>
       <Divider />
     </Box>
   );
@@ -533,6 +563,7 @@ const Header = () => {
                   <Typography>Home</Typography>
                 </NavLink>
                 <NavLink
+                  to="/game"
                   className="navbar"
                   onClick={handleActiveEffectGame}
                   style={{
