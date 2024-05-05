@@ -13,6 +13,7 @@ import cartImage from "../../assets/Images/thumbnail.png";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ClearIcon from "@mui/icons-material/Clear";
+import { useNavigate } from "react-router-dom";
 
 const AddToCart = () => {
   //page on top position..............!
@@ -22,6 +23,7 @@ const AddToCart = () => {
 
   //cart
   const [count, setCount] = React.useState(0);
+  const navigation = useNavigate();
 
   const increment = (e) => {
     e.preventDefault();
@@ -40,6 +42,11 @@ const AddToCart = () => {
   const clearItem = () => {
     setVisible(false);
   };
+
+  //handleCustomerInformation....................!
+  const handleCustomerInformation = () => {
+    navigation('/information');
+  }
 
   return (
     <div style={{ marginTop: "80px", marginBottom: "100px" }}>
@@ -275,7 +282,8 @@ const AddToCart = () => {
                   </div>
                   <Button
                     variant="contained"
-                    sx={{ textTransform: "none" }}
+                    onClick={handleCustomerInformation}
+                    sx={{ textTransform: "none", height: '50px' }}
                     color="info"
                   >
                     Check Out

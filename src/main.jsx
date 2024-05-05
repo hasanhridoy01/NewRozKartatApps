@@ -8,6 +8,7 @@ import Vouchers from './components/Vouchers/Vouchers.jsx';
 import BillPay from './components/BillPay/BillPay.jsx';
 import MobileRecharge from './components/MobileRecharge/MobileRecharge.jsx';
 import AddToCart from './components/AddToCart/AddToCart.jsx';
+import CustomerInformation from './components/CustomerInformation/CustomerInformation.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/addToCart',
         element: <AddToCart />
+      },
+      {
+        path: '/information',
+        element: <CustomerInformation />
       }
     ]
   }
