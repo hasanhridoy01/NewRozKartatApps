@@ -123,6 +123,7 @@ const Header = () => {
   };
   const handleActiveEffectBill = (e) => {
     e.preventDefault();
+    navigate('/billPay');
     setIsActiveBill(true);
     setIsActiveHome(false);
     setIsActiveGame(false);
