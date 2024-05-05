@@ -114,6 +114,7 @@ const Header = () => {
   };
   const handleActiveEffectVouchers = (e) => {
     e.preventDefault();
+    navigate('/vouchers');
     setIsActiveVouchers(true);
     setIsActiveHome(false);
     setIsActiveGame(false);
