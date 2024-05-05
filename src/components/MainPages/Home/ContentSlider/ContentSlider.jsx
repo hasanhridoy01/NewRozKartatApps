@@ -1,18 +1,38 @@
-import { Container, Grid } from "@mui/material";
-import img1 from "../../../../assets/Images/homeSlider/Rectangle 12312.png";
+import { Grid } from "@mui/material";
+import img1 from "../../../../assets/Images/homeSlider/Screenshot_2.png";
 import img2 from "../../../../assets/Images/homeSlider/item.png";
+
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import "./ContentSlider.css";
+
+// import required modules
+import { Pagination } from "swiper/modules";
 
 const ContentSlider = () => {
   return (
-    <div style={{ marginTop: '100px' }}>
+    <div style={{ marginTop: "100px" }}>
       <>
         <Grid container alignItems="center" justifyContent="center">
-          <Grid item lg={6} md={6} sm={12} xs={12}>
-            <img style={{ width: '98%' }} src={img2} alt="" />
-          </Grid>
-          <Grid item lg={6} md={6} sm={12} xs={12}>
-            <img style={{ width: '98%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} src={img2} alt="" />
-          </Grid>
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
+            <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
+            <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
+          </Swiper>
         </Grid>
       </>
     </div>
