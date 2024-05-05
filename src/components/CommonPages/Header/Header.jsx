@@ -132,6 +132,7 @@ const Header = () => {
   };
   const handleActiveEffectMobile = (e) => {
     e.preventDefault();
+    navigate('/mobile');
     setIsActiveMobile(true);
     setIsActiveHome(false);
     setIsActiveGame(false);
