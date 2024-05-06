@@ -53,6 +53,11 @@ const GiftCard = () => {
   const handleAddCart = () => {
     navigate('/addToCart')
   }
+
+  //handleDetails...........................!
+  const handleDetails = (id) => {
+    navigate(`/details/${id}`);
+  }
   return (
     <div style={{ marginTop: "100px" }}>
       <Stack>
@@ -89,7 +94,8 @@ const GiftCard = () => {
                 }}
               >
                 <CardMedia
-                  sx={{ height: 200 }}
+                  sx={{ height: 200, cursor: 'pointer' }}
+                  onClick={() => {handleDetails(1)}}
                   image={img1}
                   name="images"
                   title="green iguana"
@@ -174,7 +180,8 @@ const GiftCard = () => {
               }}
             >
               <CardMedia
-                sx={{ height: 200 }}
+                sx={{ height: 200, cursor: 'pointer' }}
+                onClick={() => {handleDetails(2)}}
                 image={img2}
                 title="green iguana"
               />
@@ -254,7 +261,8 @@ const GiftCard = () => {
               }}
             >
               <CardMedia
-                sx={{ height: 200 }}
+                sx={{ height: 200, cursor: 'pointer' }}
+                onClick={() => {handleDetails(3)}}
                 image={img3}
                 title="green iguana"
               />
@@ -334,7 +342,8 @@ const GiftCard = () => {
               }}
             >
               <CardMedia
-                sx={{ height: 200 }}
+                sx={{ height: 200, cursor: 'pointer' }}
+                onClick={() => {handleDetails(4)}}
                 image={img4}
                 title="green iguana"
               />
