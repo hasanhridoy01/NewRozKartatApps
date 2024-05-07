@@ -530,11 +530,12 @@ const Header = () => {
                   }}
                 />
               }
-            ></Button>
+              sx={{ width: '100%', background: '#fff', marginRight: '10px', color: '#000', borderRadius: '5px' }}
+            >1000</Button>
             <img
               src={logo1}
               alt=""
-              style={{ background: "none", width: "40px" }}
+              style={{ background: "none", width: "40px", borderRadius: '5px' }}
             />
             <Button
               onClick={handleOpenModal}
@@ -546,6 +547,7 @@ const Header = () => {
                     backgroundColor: "#fff",
                     padding: "6px",
                     width: "100%",
+                    borderRadius: '5px'
                   }}
                 />
               }
