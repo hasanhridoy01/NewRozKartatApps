@@ -47,6 +47,8 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
+import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
+import OtpInput from "react-otp-input";
 
 //Modal Style.........................!
 const style = {
@@ -123,6 +125,13 @@ const Header = () => {
   const [isActiveBill, setIsActiveBill] = React.useState(false);
   const [isActiveMobile, setIsActiveMobile] = React.useState(false);
   const navigate = useNavigate();
+  const [otp, setOtp] = React.useState("");
+  const [isOtpComplete, setIsOtpComplete] = React.useState(false);
+
+  const handleOtpChange = (otp) => {
+    setOtp(otp);
+    setIsOtpComplete(otp.length === 4);
+  };
 
   //login modal event...................!
   const [openModal, setOpenModal] = React.useState(false);
@@ -141,7 +150,7 @@ const Header = () => {
   };
   const handleRegistrationModalClose = () => setOpenRegistrationModal(false);
 
-  // Registration modal event
+  // Forgot modal event
   const [openForgotModal, setOpenForgotModal] = React.useState(false);
   const handleForgotModalOpen = () => {
     setOpenForgotModal(true);
@@ -149,6 +158,16 @@ const Header = () => {
     setOpenRegistrationModal(false);
   };
   const handleForgotModalClose = () => setOpenForgotModal(false);
+
+  // OTP modal event
+  const [openOtpModal, setOpenOtpModal] = React.useState(false);
+  const handleOTPModalOpen = () => {
+    setOpenOtpModal(true);
+    setOpenForgotModal(false);
+    setOpenModal(false);
+    setOpenRegistrationModal(false);
+  };
+  const handleOTPModalClose = () => setOpenOtpModal(false);
 
   const handleActiveEffectHome = (e) => {
     e.preventDefault();
@@ -1087,7 +1106,7 @@ const Header = () => {
                     />
 
                     <TextField
-                    sx={{ marginTop: '17px' }}
+                      sx={{ marginTop: "17px" }}
                       className="inputField"
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Confirm Password"
@@ -1098,7 +1117,7 @@ const Header = () => {
                             sx={{ marginRight: "0px", marginLeft: "0px" }}
                           >
                             <IconButton>
-                              <LockOpenIcon />
+                              <LockResetOutlinedIcon />
                             </IconButton>
                           </InputAdornment>
                         ),
@@ -1139,6 +1158,7 @@ const Header = () => {
 
                   <div className="">
                     <Button
+                      onClick={handleOTPModalOpen}
                       size="large"
                       variant="contained"
                       color="info"
@@ -1152,6 +1172,141 @@ const Header = () => {
                     >
                       Confirm
                     </Button>
+                  </div>
+                </div>
+              </Box>
+            </Modal>
+
+            {/* OTP modal */}
+            <Modal
+              open={openOtpModal}
+              onClose={handleOTPModalClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className={`modal ${openOtpModal ? "active" : ""}`}
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    className=""
+                    style={{ marginTop: "10px", marginRight: "140px" }}
+                  >
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "9px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "337px",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        textAlign: "left",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
+                    >
+                      Enter OTP
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "left",
+                        marginBottom: "2px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "16px",
+                      }}
+                    >
+                      Enter confirmation code that we sent to:
+                    </Typography>
+
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "left",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#ec5928",
+                        fontSize: "16px",
+                      }}
+                    >
+                      hasanhridoy1367@gmail.com
+                    </Typography>
+
+                    <OtpInput
+                      value={otp}
+                      onChange={handleOtpChange}
+                      numInputs={4}
+                      renderSeparator={
+                        <span style={{ marginRight: "14px" }}> </span>
+                      }
+                      renderInput={(props, index) => (
+                        <input
+                          {...props}
+                          style={{
+                            width: "45px",
+                            height: "45px",
+                            margin: "0 5px",
+                            fontSize: "16px",
+                            textAlign: "center",
+                            border: "1px solid #ccc",
+                            borderRadius: "5px",
+                            outline: "none",
+                            marginTop: "10px",
+                            marginLeft: "0px",
+                            background: "#f1f1f1",
+                          }}
+                        />
+                      )}
+                    />
+
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      sx={{ marginTop: "23px" }}
+                    >
+                      Didn't get the code?{" "}
+                      <span style={{ color: "#44b6e1", cursor: "pointer" }}>
+                        Resend
+                      </span>
+                    </Typography>
+
+                    {isOtpComplete && ( 
+                      <div className="" style={{ marginTop: "20px" }}>
+                        <Button
+                          size="large"
+                          variant="contained"
+                          gutterBottom
+                          color="info"
+                          sx={{
+                            textTransform: "none",
+                            width: "100%",
+                            boxShadow: "none",
+                          }}
+                        >
+                          Done
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Box>
