@@ -1266,7 +1266,7 @@ const Header = () => {
                             width: "45px",
                             height: "45px",
                             margin: "0 5px",
-                            fontSize: "16px",
+                            fontSize: "18px",
                             textAlign: "center",
                             border: "1px solid #ccc",
                             borderRadius: "5px",
