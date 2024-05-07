@@ -10,12 +10,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   Button,
+  Checkbox,
   Container,
   Divider,
   Drawer,
+  FormControlLabel,
   Grid,
+  InputAdornment,
   Select,
   Stack,
+  TextField,
   useMediaQuery,
 } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -32,8 +36,30 @@ import cartImage from "../../../assets/Images/thumbnail.png";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ClearIcon from "@mui/icons-material/Clear";
+import Modal from "@mui/material/Modal";
+import { Icon } from "@mui/material";
+import EmailIcon from "@mui/icons-material/Email";
 
 import { Paper } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+
+//Modal Style.........................!
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #f1f1f1",
+  boxShadow: 24,
+  p: 4,
+  margin: "auto",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "10px",
+};
 
 // Styled wrapper for the search icon
 const SearchIconWrapperr = styled("div")({
@@ -94,9 +120,14 @@ const Header = () => {
   const [isActiveMobile, setIsActiveMobile] = React.useState(false);
   const navigate = useNavigate();
 
+  //modal event...................!
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
+
   const handleActiveEffectHome = (e) => {
     e.preventDefault();
-    navigate('/');
+    navigate("/");
     setIsActiveHome(true);
     setIsActiveGame(false);
     setIsActiveVouchers(false);
@@ -105,7 +136,7 @@ const Header = () => {
   };
   const handleActiveEffectGame = (e) => {
     e.preventDefault();
-    navigate('/game');
+    navigate("/game");
     setIsActiveGame(true);
     setIsActiveHome(false);
     setIsActiveVouchers(false);
@@ -114,7 +145,7 @@ const Header = () => {
   };
   const handleActiveEffectVouchers = (e) => {
     e.preventDefault();
-    navigate('/vouchers');
+    navigate("/vouchers");
     setIsActiveVouchers(true);
     setIsActiveHome(false);
     setIsActiveGame(false);
@@ -123,7 +154,7 @@ const Header = () => {
   };
   const handleActiveEffectBill = (e) => {
     e.preventDefault();
-    navigate('/billPay');
+    navigate("/billPay");
     setIsActiveBill(true);
     setIsActiveHome(false);
     setIsActiveGame(false);
@@ -132,7 +163,7 @@ const Header = () => {
   };
   const handleActiveEffectMobile = (e) => {
     e.preventDefault();
-    navigate('/mobile');
+    navigate("/mobile");
     setIsActiveMobile(true);
     setIsActiveHome(false);
     setIsActiveGame(false);
@@ -363,6 +394,12 @@ const Header = () => {
     </Box>
   );
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="top">
       <Box
@@ -450,6 +487,7 @@ const Header = () => {
               style={{ background: "none", width: "40px" }}
             />
             <Button
+              onClick={handleOpenModal}
               startIcon={
                 <Person2OutlinedIcon
                   sx={{
@@ -462,6 +500,125 @@ const Header = () => {
                 />
               }
             ></Button>
+
+            {/* modal */}
+            <Modal
+              open={openModal}
+              onClose={handleCloseModal}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div className="" style={{ marginTop: "10px" }}>
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "14px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{ textAlign: "center", marginBottom: "10px" }}
+                    >
+                      Sign In
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{ textAlign: "center", marginBottom: "10px" }}
+                    >
+                      Welcome back! Please enter your details.
+                    </Typography>
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      className="inputField"
+                      type="text"
+                      placeholder="Email"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailIcon />
+                          </InputAdornment>
+                        ),
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start" sx={{ marginRight: '0px', marginLeft: '0px' }}>
+                            <IconButton>
+                              <LockOpenIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleTogglePasswordVisibility}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: '16px',
+                      width: '337px'
+                    }}
+                  >
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="Remember Me"
+                      color="info"
+                    />
+                    <Typography variant="body1" sx={{ textDecoration: 'underLine', float: 'left', color: 'gray' }}>Forgot Password</Typography>
+                  </div>
+
+                  <div className="">
+                    <Button size="large" variant="contained" color="info" sx={{ textTransform: 'none', marginTop: '25px', width: '337px', boxShadow: 'none', marginBottom: '26px' }}>Sign In</Button>
+                  </div>
+                </div>
+              </Box>
+            </Modal>
           </div>
         )}
 
