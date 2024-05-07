@@ -28,6 +28,7 @@ const ContentSlider = () => {
             }}
             modules={[Pagination]}
             className="mySwiper"
+            style={{ border: 'none' }}
           >
             <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
             <SwiperSlide><img src={img2} alt="" /></SwiperSlide>

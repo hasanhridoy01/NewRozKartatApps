@@ -23,6 +23,7 @@ const BigIamages = () => {
           }}
           modules={[Autoplay, Pagination]}
           className="mySwiper"
+          style={{ border: 'none' }}
         >
           <SwiperSlide>
             <img className="sliderImages" src={img1} alt="" />

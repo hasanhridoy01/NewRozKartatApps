@@ -71,6 +71,7 @@ const Slider = () => {
           }}
           modules={[Autoplay, Pagination]}
           className="mySwiper"
+          style={{ border: 'none' }}
         >
           {banners?.map((banner) => (
             <SwiperSlide key={banner.id}>
