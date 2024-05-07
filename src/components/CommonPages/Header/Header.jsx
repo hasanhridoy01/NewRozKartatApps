@@ -43,6 +43,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import { Paper } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
 
 //Modal Style.........................!
 const style = {
@@ -120,10 +124,22 @@ const Header = () => {
   const [isActiveMobile, setIsActiveMobile] = React.useState(false);
   const navigate = useNavigate();
 
-  //modal event...................!
+  //login modal event...................!
   const [openModal, setOpenModal] = React.useState(false);
-  const handleOpenModal = () => setOpenModal(true);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+    setOpenRegistrationModal(false); 
+  };
   const handleCloseModal = () => setOpenModal(false);
+
+  // Registration modal event
+  const [openRegistrationModal, setOpenRegistrationModal] =
+    React.useState(false);
+  const handleRegistrationModalOpen = () => {
+    setOpenRegistrationModal(true);
+    setOpenModal(false); 
+  };
+  const handleRegistrationModalClose = () => setOpenRegistrationModal(false);
 
   const handleActiveEffectHome = (e) => {
     e.preventDefault();
@@ -501,7 +517,7 @@ const Header = () => {
               }
             ></Button>
 
-            {/* modal */}
+            {/* Login modal */}
             <Modal
               open={openModal}
               onClose={handleCloseModal}
@@ -528,17 +544,32 @@ const Header = () => {
                       marginTop: "14px",
                       alignItems: "center",
                       justifyContent: "center",
+                      width: "337px",
                     }}
                   >
                     <Typography
                       variant="h5"
-                      sx={{ textAlign: "center", marginBottom: "10px" }}
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
                     >
                       Sign In
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ textAlign: "center", marginBottom: "10px" }}
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "18px",
+                      }}
                     >
                       Welcome back! Please enter your details.
                     </Typography>
@@ -562,6 +593,7 @@ const Header = () => {
                             <EmailIcon />
                           </InputAdornment>
                         ),
+                        style: { border: "none" },
                       }}
                       sx={{ marginBottom: "17px" }}
                     />
@@ -571,7 +603,10 @@ const Header = () => {
                       placeholder="Password"
                       InputProps={{
                         startAdornment: (
-                          <InputAdornment position="start" sx={{ marginRight: '0px', marginLeft: '0px' }}>
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
                             <IconButton>
                               <LockOpenIcon />
                             </IconButton>
@@ -601,8 +636,8 @@ const Header = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      marginTop: '16px',
-                      width: '337px'
+                      marginTop: "16px",
+                      width: "335px",
                     }}
                   >
                     <FormControlLabel
@@ -610,11 +645,310 @@ const Header = () => {
                       label="Remember Me"
                       color="info"
                     />
-                    <Typography variant="body1" sx={{ textDecoration: 'underLine', float: 'left', color: 'gray' }}>Forgot Password</Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textDecoration: "underLine",
+                        float: "left",
+                        color: "gray",
+                      }}
+                    >
+                      Forgot Password
+                    </Typography>
                   </div>
 
                   <div className="">
-                    <Button size="large" variant="contained" color="info" sx={{ textTransform: 'none', marginTop: '25px', width: '337px', boxShadow: 'none', marginBottom: '26px' }}>Sign In</Button>
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      sx={{
+                        textTransform: "none",
+                        marginTop: "25px",
+                        width: "337px",
+                        boxShadow: "none",
+                        marginBottom: "23px",
+                      }}
+                    >
+                      Sign In
+                    </Button>
+                  </div>
+
+                  <Divider />
+
+                  <div className="">
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      sx={{ marginLeft: "4px" }}
+                    >
+                      Sign in with social
+                    </Typography>
+                    <Stack
+                      spacing={1}
+                      direction={"row"}
+                      sx={{ marginTop: "15px" }}
+                    >
+                      <FacebookRoundedIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <TwitterIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <InstagramIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                    </Stack>
+                  </div>
+
+                  <div className="" style={{ marginTop: "17px" }}>
+                    <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      Do not have an account?{" "}
+                      <span
+                        style={{
+                          textDecoration: "underLine",
+                          fontSize: "13px",
+                          color: "orange",
+                          cursor: "pointer",
+                        }}
+                        onClick={handleRegistrationModalOpen}
+                      >
+                        REGISTRATION
+                      </span>
+                    </Typography>
+                  </div>
+                </div>
+              </Box>
+            </Modal>
+
+            {/* Registration modal */}
+            <Modal
+              open={openRegistrationModal}
+              onClose={handleRegistrationModalClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div className="" style={{ marginTop: "10px" }}>
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "14px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "337px",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
+                    >
+                      Create an account
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Looks like you’re new to Kartat.
+                    </Typography>
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      className="inputField"
+                      type="text"
+                      placeholder="Name"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Person3OutlinedIcon />
+                          </InputAdornment>
+                        ),
+                        style: { border: "none" },
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type="email"
+                      placeholder="Email"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailIcon />
+                          </InputAdornment>
+                        ),
+                        style: { border: "none" },
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
+                            <IconButton>
+                              <LockOpenIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleTogglePasswordVisibility}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "16px",
+                      width: "335px",
+                    }}
+                  >
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="I agree to the Terms & Condition"
+                      color="info"
+                    />
+                  </div>
+
+                  <div className="">
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      sx={{
+                        textTransform: "none",
+                        marginTop: "25px",
+                        width: "337px",
+                        boxShadow: "none",
+                        marginBottom: "23px",
+                      }}
+                    >
+                      Create Account
+                    </Button>
+                  </div>
+
+                  <Divider />
+
+                  <div className="">
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      sx={{ marginLeft: "4px" }}
+                    >
+                      Sign in with social
+                    </Typography>
+                    <Stack
+                      spacing={1}
+                      direction={"row"}
+                      sx={{ marginTop: "15px" }}
+                    >
+                      <FacebookRoundedIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <TwitterIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <InstagramIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                    </Stack>
+                  </div>
+
+                  <div className="" style={{ marginTop: "17px" }}>
+                    <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      Already have an account?
+                      <span
+                        style={{
+                          textDecoration: "underLine",
+                          fontSize: "13px",
+                          color: "orange",
+                          cursor: "pointer",
+                          marginLeft: "4px",
+                        }}
+                        onClick={handleOpenModal}
+                      >
+                        SIGN IN
+                      </span>
+                    </Typography>
                   </div>
                 </div>
               </Box>
