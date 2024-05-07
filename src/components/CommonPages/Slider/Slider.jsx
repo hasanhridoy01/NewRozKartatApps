@@ -11,40 +11,17 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Container } from "@mui/material";
 import { Autoplay, Pagination } from "swiper/modules";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { sliderContext } from "../../../Provider/SliderProvider/SliderProvider";
 
 const Slider = () => {
   const isSmallScreen = useMediaQuery("(max-width: 900px)");
-  const [banners, setBanners] = useState();
-
-  // Fetch the API data
-  const fetchBanner = async () => {
-    try {
-      const response = await axios.get(
-        "https://dev-api.kartat.io/api/cms/init"
-      );
-      console.log(response.data.data);
-      const bannersData = response.data.data.banners ?? [];
-
-      const filteredBanners = bannersData.filter(banner => banner.name === "main");
-
-      if (Array.isArray(filteredBanners) && filteredBanners.length > 0) {
-        const allMedias = filteredBanners.flatMap((banner) => banner.medias ?? []);
-        setBanners(allMedias);
-        console.log(banners);
-      } else {
-        console.log("Banners data is empty or not an array.");
-      }
-    } catch (error) {
-      console.error("Error fetching banner:", error);
-      throw error;
-    }
-  };
-
-  // Using Effect
+  const { fetchBanner, banners } = useContext(sliderContext);
+  
+  //set Slider Name..................!
   useEffect(() => {
-    fetchBanner();
-  }, []);
+    fetchBanner("main");
+  }, [fetchBanner]); 
   return (
     <div
       style={{
