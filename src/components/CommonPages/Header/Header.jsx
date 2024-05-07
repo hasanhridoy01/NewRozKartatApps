@@ -128,7 +128,7 @@ const Header = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const handleOpenModal = () => {
     setOpenModal(true);
-    setOpenRegistrationModal(false); 
+    setOpenRegistrationModal(false);
   };
   const handleCloseModal = () => setOpenModal(false);
 
@@ -137,9 +137,18 @@ const Header = () => {
     React.useState(false);
   const handleRegistrationModalOpen = () => {
     setOpenRegistrationModal(true);
-    setOpenModal(false); 
+    setOpenModal(false);
   };
   const handleRegistrationModalClose = () => setOpenRegistrationModal(false);
+
+  // Registration modal event
+  const [openForgotModal, setOpenForgotModal] = React.useState(false);
+  const handleForgotModalOpen = () => {
+    setOpenForgotModal(true);
+    setOpenModal(false);
+    setOpenRegistrationModal(false);
+  };
+  const handleForgotModalClose = () => setOpenForgotModal(false);
 
   const handleActiveEffectHome = (e) => {
     e.preventDefault();
@@ -416,6 +425,12 @@ const Header = () => {
     setShowPassword(!showPassword);
   };
 
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+
+  const handleToggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div className="top">
       <Box
@@ -523,6 +538,7 @@ const Header = () => {
               onClose={handleCloseModal}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
+              className={`modal ${openModal ? "active" : ""}`}
             >
               <Box sx={style}>
                 <div
@@ -646,11 +662,13 @@ const Header = () => {
                       color="info"
                     />
                     <Typography
+                      onClick={handleForgotModalOpen}
                       variant="body1"
                       sx={{
                         textDecoration: "underLine",
                         float: "left",
                         color: "gray",
+                        cursor: "pointer",
                       }}
                     >
                       Forgot Password
@@ -739,6 +757,7 @@ const Header = () => {
               onClose={handleRegistrationModalClose}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
+              className={`modal ${openRegistrationModal ? "active" : ""}`}
             >
               <Box sx={style}>
                 <div
@@ -949,6 +968,190 @@ const Header = () => {
                         SIGN IN
                       </span>
                     </Typography>
+                  </div>
+                </div>
+              </Box>
+            </Modal>
+
+            {/* Forgot modal */}
+            <Modal
+              open={openForgotModal}
+              onClose={handleForgotModalClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className={`modal ${openForgotModal ? "active" : ""}`}
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div className="" style={{ marginTop: "10px" }}>
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "14px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "337px",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
+                    >
+                      Please Fill This Field
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Looks like you’re new to Kartat.
+                    </Typography>
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      className="inputField"
+                      type="email"
+                      placeholder="Email"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailIcon />
+                          </InputAdornment>
+                        ),
+                        style: { border: "none" },
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
+                            <IconButton>
+                              <LockOpenIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleTogglePasswordVisibility}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+
+                    <TextField
+                    sx={{ marginTop: '17px' }}
+                      className="inputField"
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Confirm Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
+                            <IconButton>
+                              <LockOpenIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleToggleConfirmPasswordVisibility}
+                              edge="end"
+                            >
+                              {showConfirmPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "16px",
+                      width: "335px",
+                    }}
+                  >
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="I agree to the Terms & Condition"
+                      color="info"
+                    />
+                  </div>
+
+                  <div className="">
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      sx={{
+                        textTransform: "none",
+                        marginTop: "25px",
+                        width: "337px",
+                        boxShadow: "none",
+                        marginBottom: "23px",
+                      }}
+                    >
+                      Confirm
+                    </Button>
                   </div>
                 </div>
               </Box>
