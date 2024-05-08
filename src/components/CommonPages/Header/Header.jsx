@@ -483,6 +483,7 @@ const Header = () => {
             style={{
               marginTop: isSmallScreenThree ? "27px" : "0px",
               marginLeft: isSmallScreenThree ? "-56px" : "0px",
+              width: isSmallScreenThree ? "480px" : "400px",
             }}
           >
             <Container sx={{ display: "flex" }}>
@@ -494,7 +495,7 @@ const Header = () => {
                   p: "2px 2px",
                   display: "flex",
                   alignItems: "center",
-                  width: "100%",
+                  width: isSmallScreenThree ? '500px' : "100%",
                   boxShadow: "none",
                 }}
               >
@@ -530,12 +531,20 @@ const Header = () => {
                   }}
                 />
               }
-              sx={{ width: '100%', background: '#fff', marginRight: '10px', color: '#000', borderRadius: '5px' }}
-            >1000</Button>
+              sx={{
+                width: "100%",
+                background: "#fff",
+                marginRight: "10px",
+                color: "#000",
+                borderRadius: "5px",
+              }}
+            >
+              1000
+            </Button>
             <img
               src={logo1}
               alt=""
-              style={{ background: "none", width: "40px", borderRadius: '5px' }}
+              style={{ background: "none", width: "40px", borderRadius: "5px" }}
             />
             <Button
               onClick={handleOpenModal}
@@ -547,7 +556,7 @@ const Header = () => {
                     backgroundColor: "#fff",
                     padding: "6px",
                     width: "100%",
-                    borderRadius: '5px'
+                    borderRadius: "5px",
                   }}
                 />
               }
@@ -1292,7 +1301,7 @@ const Header = () => {
                       </span>
                     </Typography>
 
-                    {isOtpComplete && ( 
+                    {isOtpComplete && (
                       <div className="" style={{ marginTop: "20px" }}>
                         <Button
                           size="large"
@@ -1314,6 +1323,820 @@ const Header = () => {
               </Box>
             </Modal>
           </div>
+        )}
+
+        {isSmallScreenThree ? (
+          <div
+            className=""
+            style={{ display: "flex", height: "32px", marginTop: '25px', marginBottom: '105px', marginLeft: '-184px', marginRight: '200px' }}
+          >
+            <Button
+              onClick={toggleDrawer(true)}
+              startIcon={
+                <ShoppingCartOutlinedIcon
+                  sx={{
+                    fontSize: "30px",
+                    color: "#000",
+                    backgroundColor: "#fff",
+                    padding: "6px",
+                    width: "100%",
+                  }}
+                />
+              }
+              sx={{
+                width: "100%",
+                background: "#fff",
+                marginRight: "10px",
+                color: "#000",
+                borderRadius: "5px",
+              }}
+            >
+              1000
+            </Button>
+            <img
+              src={logo1}
+              alt=""
+              style={{ background: "none", width: "40px", borderRadius: "5px" }}
+            />
+            <Button
+              onClick={handleOpenModal}
+              startIcon={
+                <Person2OutlinedIcon
+                  sx={{
+                    fontSize: "30px",
+                    color: "#000",
+                    backgroundColor: "#fff",
+                    padding: "6px",
+                    width: "100%",
+                    borderRadius: "5px",
+                  }}
+                />
+              }
+            ></Button>
+
+            {/* Login modal */}
+            <Modal
+              open={openModal}
+              onClose={handleCloseModal}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className={`modal ${openModal ? "active" : ""}`}
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div className="" style={{ marginTop: "10px" }}>
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "14px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "337px",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
+                    >
+                      Sign In
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Welcome back! Please enter your details.
+                    </Typography>
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      className="inputField"
+                      type="text"
+                      placeholder="Email"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailIcon />
+                          </InputAdornment>
+                        ),
+                        style: { border: "none" },
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
+                            <IconButton>
+                              <LockOpenIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleTogglePasswordVisibility}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "16px",
+                      width: "335px",
+                    }}
+                  >
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="Remember Me"
+                      color="info"
+                    />
+                    <Typography
+                      onClick={handleForgotModalOpen}
+                      variant="body1"
+                      sx={{
+                        textDecoration: "underLine",
+                        float: "left",
+                        color: "gray",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Forgot Password
+                    </Typography>
+                  </div>
+
+                  <div className="">
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      sx={{
+                        textTransform: "none",
+                        marginTop: "25px",
+                        width: "337px",
+                        boxShadow: "none",
+                        marginBottom: "23px",
+                      }}
+                    >
+                      Sign In
+                    </Button>
+                  </div>
+
+                  <Divider />
+
+                  <div className="">
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      sx={{ marginLeft: "4px" }}
+                    >
+                      Sign in with social
+                    </Typography>
+                    <Stack
+                      spacing={1}
+                      direction={"row"}
+                      sx={{ marginTop: "15px" }}
+                    >
+                      <FacebookRoundedIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <TwitterIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <InstagramIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                    </Stack>
+                  </div>
+
+                  <div className="" style={{ marginTop: "17px" }}>
+                    <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      Do not have an account?{" "}
+                      <span
+                        style={{
+                          textDecoration: "underLine",
+                          fontSize: "13px",
+                          color: "orange",
+                          cursor: "pointer",
+                        }}
+                        onClick={handleRegistrationModalOpen}
+                      >
+                        REGISTRATION
+                      </span>
+                    </Typography>
+                  </div>
+                </div>
+              </Box>
+            </Modal>
+
+            {/* Registration modal */}
+            <Modal
+              open={openRegistrationModal}
+              onClose={handleRegistrationModalClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className={`modal ${openRegistrationModal ? "active" : ""}`}
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div className="" style={{ marginTop: "10px" }}>
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "14px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "337px",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
+                    >
+                      Create an account
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Looks like you’re new to Kartat.
+                    </Typography>
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      className="inputField"
+                      type="text"
+                      placeholder="Name"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Person3OutlinedIcon />
+                          </InputAdornment>
+                        ),
+                        style: { border: "none" },
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type="email"
+                      placeholder="Email"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailIcon />
+                          </InputAdornment>
+                        ),
+                        style: { border: "none" },
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
+                            <IconButton>
+                              <LockOpenIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleTogglePasswordVisibility}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "16px",
+                      width: "335px",
+                    }}
+                  >
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="I agree to the Terms & Condition"
+                      color="info"
+                    />
+                  </div>
+
+                  <div className="">
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      sx={{
+                        textTransform: "none",
+                        marginTop: "25px",
+                        width: "337px",
+                        boxShadow: "none",
+                        marginBottom: "23px",
+                      }}
+                    >
+                      Create Account
+                    </Button>
+                  </div>
+
+                  <Divider />
+
+                  <div className="">
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      sx={{ marginLeft: "4px" }}
+                    >
+                      Sign in with social
+                    </Typography>
+                    <Stack
+                      spacing={1}
+                      direction={"row"}
+                      sx={{ marginTop: "15px" }}
+                    >
+                      <FacebookRoundedIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <TwitterIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                      <InstagramIcon
+                        sx={{
+                          padding: "6px",
+                          background: "#f1f1f1",
+                          borderRadius: "5px",
+                        }}
+                      />
+                    </Stack>
+                  </div>
+
+                  <div className="" style={{ marginTop: "17px" }}>
+                    <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      Already have an account?
+                      <span
+                        style={{
+                          textDecoration: "underLine",
+                          fontSize: "13px",
+                          color: "orange",
+                          cursor: "pointer",
+                          marginLeft: "4px",
+                        }}
+                        onClick={handleOpenModal}
+                      >
+                        SIGN IN
+                      </span>
+                    </Typography>
+                  </div>
+                </div>
+              </Box>
+            </Modal>
+
+            {/* Forgot modal */}
+            <Modal
+              open={openForgotModal}
+              onClose={handleForgotModalClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className={`modal ${openForgotModal ? "active" : ""}`}
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div className="" style={{ marginTop: "10px" }}>
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "14px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "337px",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
+                    >
+                      Please Fill This Field
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "center",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Looks like you’re new to Kartat.
+                    </Typography>
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      className="inputField"
+                      type="email"
+                      placeholder="Email"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailIcon />
+                          </InputAdornment>
+                        ),
+                        style: { border: "none" },
+                      }}
+                      sx={{ marginBottom: "17px" }}
+                    />
+                    <TextField
+                      className="inputField"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
+                            <IconButton>
+                              <LockOpenIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleTogglePasswordVisibility}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+
+                    <TextField
+                      sx={{ marginTop: "17px" }}
+                      className="inputField"
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Confirm Password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            sx={{ marginRight: "0px", marginLeft: "0px" }}
+                          >
+                            <IconButton>
+                              <LockResetOutlinedIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleToggleConfirmPasswordVisibility}
+                              edge="end"
+                            >
+                              {showConfirmPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "16px",
+                      width: "335px",
+                    }}
+                  >
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="I agree to the Terms & Condition"
+                      color="info"
+                    />
+                  </div>
+
+                  <div className="">
+                    <Button
+                      onClick={handleOTPModalOpen}
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      sx={{
+                        textTransform: "none",
+                        marginTop: "25px",
+                        width: "337px",
+                        boxShadow: "none",
+                        marginBottom: "23px",
+                      }}
+                    >
+                      Confirm
+                    </Button>
+                  </div>
+                </div>
+              </Box>
+            </Modal>
+
+            {/* OTP modal */}
+            <Modal
+              open={openOtpModal}
+              onClose={handleOTPModalClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className={`modal ${openOtpModal ? "active" : ""}`}
+            >
+              <Box sx={style}>
+                <div
+                  className=""
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    className=""
+                    style={{ marginTop: "10px", marginRight: "140px" }}
+                  >
+                    <img src={logo} alt="" />
+                  </div>
+
+                  <div
+                    className=""
+                    style={{
+                      marginTop: "9px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "337px",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        textAlign: "left",
+                        marginBottom: "10px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                      }}
+                    >
+                      Enter OTP
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "left",
+                        marginBottom: "2px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#555555",
+                        fontSize: "16px",
+                      }}
+                    >
+                      Enter confirmation code that we sent to:
+                    </Typography>
+
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        textAlign: "left",
+                        marginBottom: "4px",
+                        fontFamily: "Montserrat",
+                        fontOpticalSizing: "auto",
+                        fontStyle: "normal",
+                        color: "#ec5928",
+                        fontSize: "16px",
+                      }}
+                    >
+                      hasanhridoy1367@gmail.com
+                    </Typography>
+
+                    <OtpInput
+                      value={otp}
+                      onChange={handleOtpChange}
+                      numInputs={4}
+                      renderSeparator={
+                        <span style={{ marginRight: "14px" }}> </span>
+                      }
+                      renderInput={(props, index) => (
+                        <input
+                          {...props}
+                          style={{
+                            width: "45px",
+                            height: "45px",
+                            margin: "0 5px",
+                            fontSize: "18px",
+                            textAlign: "center",
+                            border: "1px solid #ccc",
+                            borderRadius: "5px",
+                            outline: "none",
+                            marginTop: "10px",
+                            marginLeft: "0px",
+                            background: "#f1f1f1",
+                          }}
+                        />
+                      )}
+                    />
+
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      sx={{ marginTop: "23px" }}
+                    >
+                      Didn't get the code?{" "}
+                      <span style={{ color: "#44b6e1", cursor: "pointer" }}>
+                        Resend
+                      </span>
+                    </Typography>
+
+                    {isOtpComplete && (
+                      <div className="" style={{ marginTop: "20px" }}>
+                        <Button
+                          size="large"
+                          variant="contained"
+                          gutterBottom
+                          color="info"
+                          sx={{
+                            textTransform: "none",
+                            width: "100%",
+                            boxShadow: "none",
+                          }}
+                        >
+                          Done
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </Box>
+            </Modal>
+          </div>
+        ) : (
+          ""
         )}
 
         <Drawer
