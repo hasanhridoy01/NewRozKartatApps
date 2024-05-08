@@ -1215,7 +1215,7 @@ const Header = () => {
                   <div
                     className=""
                     style={{
-                      marginTop: "9px",
+                      marginTop: "17px",
                       alignItems: "center",
                       justifyContent: "center",
                       width: "337px",
@@ -1225,7 +1225,7 @@ const Header = () => {
                       variant="h5"
                       sx={{
                         textAlign: "left",
-                        marginBottom: "10px",
+                        marginBottom: "2px",
                         fontFamily: "Montserrat",
                         fontOpticalSizing: "auto",
                         fontStyle: "normal",
@@ -1255,9 +1255,9 @@ const Header = () => {
                         marginBottom: "4px",
                         fontFamily: "Montserrat",
                         fontOpticalSizing: "auto",
-                        fontStyle: "normal",
-                        color: "#ec5928",
-                        fontSize: "16px",
+                        fontStyle: "bold",
+                        color: "#06C52B",
+                        fontSize: "17px",
                       }}
                     >
                       hasanhridoy1367@gmail.com
@@ -1307,11 +1307,12 @@ const Header = () => {
                           size="large"
                           variant="contained"
                           gutterBottom
-                          color="info"
                           sx={{
                             textTransform: "none",
                             width: "100%",
                             boxShadow: "none",
+                            marginBottom: '15px',
+                            background: '#44b6e1'
                           }}
                         >
                           Done
@@ -2068,7 +2069,7 @@ const Header = () => {
                         fontFamily: "Montserrat",
                         fontOpticalSizing: "auto",
                         fontStyle: "normal",
-                        color: "#ec5928",
+                        color: "#69BCF3",
                         fontSize: "16px",
                       }}
                     >
