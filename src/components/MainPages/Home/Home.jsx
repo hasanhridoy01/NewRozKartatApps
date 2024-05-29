@@ -48,7 +48,7 @@ const Home = () => {
             marginBottom: "0px",
           }}
         >
-          <h5 style={{ color: "orange", fontSize: "15px" }}>
+          <h5 style={{ color: "#EE6C3E", fontSize: "15px", fontWeight: 450 }}>
             Hi! You are not <span style={{ fontWeight: 900 }}>logged in</span>{" "}
             yet.
           </h5>
@@ -83,8 +83,8 @@ const Home = () => {
             fontSize: "12px",
             marginTop: "0px",
             fontWeight: 400,
-            lineHeight: "19px",
-            textAlign: "justify-all",
+            lineHeight: "20px",
+            textAlign: "justify",
           }}
         >
           We want to ensure you get the most out of your experience with us. By

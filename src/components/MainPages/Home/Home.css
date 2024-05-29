@@ -11,5 +11,5 @@
 }
 
 .popup-animation {
-  animation: slideUpDown 0.9s infinite; /* Adjust the duration as needed */
+  animation: slideUpDown 1s infinite; /* Adjust the duration as needed */
 }
