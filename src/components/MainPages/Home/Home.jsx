@@ -31,10 +31,10 @@ const Home = () => {
           backgroundColor: "#FFFAE7",
           width: "300px",
           padding: "15px 25px",
-          position: "absolute",
+          position: "fixed",
           transform: "translate(-50%, -50%)",
           left: "71%",
-          top: "23%",
+          top: "24%",
           zIndex: 2,
           boxShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)",
         }}
