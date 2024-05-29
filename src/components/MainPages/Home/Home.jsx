@@ -36,6 +36,7 @@ const Home = () => {
           left: "71%",
           top: "23%",
           zIndex: 2,
+          boxShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)",
         }}
         id="popup"
         className="popup-animation"
