@@ -2181,6 +2181,7 @@ const Header = () => {
               top: 0,
               zIndex: 100,
             }}
+            position="sticky"
           >
             <Toolbar>
               {isSmallScreenThree ? (
