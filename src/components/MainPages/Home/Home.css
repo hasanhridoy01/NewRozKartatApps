@@ -1,0 +1,15 @@
+@keyframes slideUpDown {
+  0% {
+    transform: translateY(-1%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1%);
+  }
+}
+
+.popup-animation {
+  animation: slideUpDown 0.9s infinite; /* Adjust the duration as needed */
+}
