@@ -17,6 +17,10 @@ import {
   FormControlLabel,
   Grid,
   InputAdornment,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   Select,
   Stack,
   TextField,
@@ -49,6 +53,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
 import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
 import OtpInput from "react-otp-input";
+
+import img from '../../../assets/Images/GameCD/item 1.png'
 
 //Modal Style.........................!
 const style = {
@@ -450,6 +456,57 @@ const Header = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  //handleSearch..........................!
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [suggestions, setSuggestions] = React.useState([]);
+  const [showDropdown, setShowDropdown] = React.useState(false);
+  const [suggestionClicked, setSuggestionClicked] = React.useState(false);
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+    // Simulate fetching suggestions
+    const newSuggestions = searchValue
+      ? ["Suggestion 1", "Suggestion 2", "Suggestion 3"]
+      : [];
+    setSuggestions(newSuggestions);
+
+    // Reset suggestionClicked flag when search value changes
+    setSuggestionClicked(false);
+
+    // Decreased the timeout to 1000 milliseconds (1 second)
+    if (searchValue && !suggestionClicked) {
+      setTimeout(() => {
+        setShowDropdown(true);
+      }, 1000);
+    } else {
+      setShowDropdown(false);
+      // Reset suggestionClicked flag
+      setSuggestionClicked(false);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchTerm(suggestion);
+    setShowDropdown(false);
+    // Set suggestionClicked flag to true
+    setSuggestionClicked(true);
+  };
+
+  const CustomListItem = ({ suggestion, onClick }) => {
+    return (
+      <ListItem button onClick={onClick}>
+        <ListItemIcon>
+          <img style={{ height: '70px', width: '80px', marginRight: '10px' }} src={img} alt="Image" />
+        </ListItemIcon>
+        <ListItemText
+          primary={suggestion}
+          secondary="Your secondary text here"
+        />
+      </ListItem>
+    );
+  };
+
   return (
     <div className="top">
       <Box
@@ -487,25 +544,39 @@ const Header = () => {
             }}
           >
             <Container sx={{ display: "flex" }}>
-              {" "}
               {/* Adjust the maxWidth as needed */}
               <Paper
                 component="form"
+                onChange={handleSearch}
                 sx={{
                   p: "2px 2px",
+                  paddingLeft: "0px",
                   display: "flex",
                   alignItems: "center",
-                  width: isSmallScreenThree ? '500px' : "100%",
+                  border: "1px solid #e5e7eb",
+                  justifyContent: "center",
+                  width: isSmallScreenThree ? "500px" : "100%",
                   boxShadow: "none",
+                  "&:hover": {
+                    border: "1px solid #0000FF",
+                  },
                 }}
               >
                 <StyledInputBase
+                  value={searchTerm}
+                  fullWidth
                   placeholder="Searching For…"
                   inputProps={{ "aria-label": "search" }}
+                  sx={{ marginLeft: "-32px" }}
                 />
-                <SearchIconWrapperr>
-                  <SearchIcon />
-                </SearchIconWrapperr>
+                <SearchIcon sx={{ marginRight: "9px", marginLeft: "0px" }} />
+                {showDropdown && (
+                  <List sx={{ position: "absolute", top: "10%", left: "26%", right: "50%", bgcolor: "background.paper", border: "1px solid rgba(0, 0, 0, 0.23)", zIndex: 1000, padding: "10px" }}>
+                  {suggestions.map((suggestion, index) => (
+                    <CustomListItem key={index} suggestion={suggestion} onClick={() => handleSuggestionClick(suggestion)} />
+                  ))}
+                </List>
+                )}
               </Paper>
             </Container>
           </div>
@@ -1311,8 +1382,8 @@ const Header = () => {
                             textTransform: "none",
                             width: "100%",
                             boxShadow: "none",
-                            marginBottom: '15px',
-                            background: '#44b6e1'
+                            marginBottom: "15px",
+                            background: "#44b6e1",
                           }}
                         >
                           Done
@@ -1329,7 +1400,14 @@ const Header = () => {
         {isSmallScreenThree ? (
           <div
             className=""
-            style={{ display: "flex", height: "32px", marginTop: '25px', marginBottom: '105px', marginLeft: '-184px', marginRight: '200px' }}
+            style={{
+              display: "flex",
+              height: "32px",
+              marginTop: "25px",
+              marginBottom: "105px",
+              marginLeft: "-184px",
+              marginRight: "200px",
+            }}
           >
             <Button
               onClick={toggleDrawer(true)}
