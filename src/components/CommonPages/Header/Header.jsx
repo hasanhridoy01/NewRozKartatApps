@@ -54,7 +54,8 @@ import Person3OutlinedIcon from "@mui/icons-material/Person3Outlined";
 import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
 import OtpInput from "react-otp-input";
 
-import img from '../../../assets/Images/GameCD/item 1.png'
+import img from "../../../assets/Images/GameCD/item 1.png";
+import axios from "axios";
 
 //Modal Style.........................!
 const style = {
@@ -462,14 +463,35 @@ const Header = () => {
   const [showDropdown, setShowDropdown] = React.useState(false);
   const [suggestionClicked, setSuggestionClicked] = React.useState(false);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     const searchValue = e.target.value;
     setSearchTerm(searchValue);
-    // Simulate fetching suggestions
+
     const newSuggestions = searchValue
       ? ["Suggestion 1", "Suggestion 2", "Suggestion 3"]
       : [];
     setSuggestions(newSuggestions);
+
+    // // Fetch suggestions based on search value
+    // let newSuggestions = [];
+    // if (searchValue) {
+    //   try {
+    //     const response = await axios.get(
+    //       "https://dev-api.kartat.io/api/cms/init"
+    //     );
+    //     const menuData = response.data.data.menus ?? [];
+    //     console.log(menuData)
+    //     const filteredMenus = menuData.filter(
+    //       (menu) => menu.name === searchValue
+    //     );
+    //     console.log(filteredMenus);
+    //     newSuggestions = filteredMenus
+    //   } catch (error) {
+    //     console.error("Error fetching suggestions:", error);
+    //   }
+    // }
+
+    // setSuggestions(newSuggestions);
 
     // Reset suggestionClicked flag when search value changes
     setSuggestionClicked(false);
@@ -487,7 +509,7 @@ const Header = () => {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setSearchTerm(suggestion);
+    setSearchTerm(suggestion); // Assuming each suggestion has a name property
     setShowDropdown(false);
     // Set suggestionClicked flag to true
     setSuggestionClicked(true);
@@ -497,7 +519,11 @@ const Header = () => {
     return (
       <ListItem button onClick={onClick}>
         <ListItemIcon>
-          <img style={{ height: '70px', width: '80px', marginRight: '10px' }} src={img} alt="Image" />
+          <img
+            style={{ height: "70px", width: "80px", marginRight: "10px" }}
+            src={img}
+            alt="Image"
+          />
         </ListItemIcon>
         <ListItemText
           primary={suggestion}
@@ -571,11 +597,26 @@ const Header = () => {
                 />
                 <SearchIcon sx={{ marginRight: "9px", marginLeft: "0px" }} />
                 {showDropdown && (
-                  <List sx={{ position: "absolute", top: "10%", left: "26%", right: "50%", bgcolor: "background.paper", border: "1px solid rgba(0, 0, 0, 0.23)", zIndex: 1000, padding: "10px" }}>
-                  {suggestions.map((suggestion, index) => (
-                    <CustomListItem key={index} suggestion={suggestion} onClick={() => handleSuggestionClick(suggestion)} />
-                  ))}
-                </List>
+                  <List
+                    sx={{
+                      position: "absolute",
+                      top: "10%",
+                      left: "26%",
+                      right: "50%",
+                      bgcolor: "background.paper",
+                      border: "1px solid rgba(0, 0, 0, 0.23)",
+                      zIndex: 1000,
+                      padding: "10px",
+                    }}
+                  >
+                    {suggestions.map((suggestion, index) => (
+                      <CustomListItem
+                        key={index}
+                        suggestion={suggestion}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                      />
+                    ))}
+                  </List>
                 )}
               </Paper>
             </Container>

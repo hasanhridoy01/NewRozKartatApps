@@ -13,7 +13,6 @@ const SliderProvider = ({ children }) => {
       const response = await axios.get(
         "https://dev-api.kartat.io/api/cms/init"
       );
-      console.log(response.data.data);
       const bannersData = response.data.data.banners ?? [];
 
       const filteredBanners = bannersData.filter(
