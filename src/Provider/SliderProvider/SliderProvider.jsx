@@ -11,7 +11,7 @@ const SliderProvider = ({ children }) => {
   const fetchBanner = async (name) => {
     try {
       const response = await axios.get(
-        "https://dev-api.kartat.io/api/cms/init"
+        ""
       );
       const bannersData = response.data.data.banners ?? [];
 
